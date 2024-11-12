@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fancy Text</title>
+
+        <link rel="stylesheet" href="css/magic.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script src="js/styles.js"></script>
+        <script defer src="js/main.js"></script>
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <h1>Fancy Text</h1>
+            <div class="inputs">
+                <div class="input-group">
+                    <label for="input">Enter your text:</label>
+                    <input type="text" id="input" value="a" />
+                </div>
+
+                <div class="input-group">
+                    <label for="comment">Comment (optional):</label>
+                    <input type="text" id="comment" />
+                </div>
+
+                <div class="input-group">
+                    <label for="style">Choose a style:</label>
+
+                    <select id="style">
+                    </select>
+
+                    <script>
+                        const select = document.getElementById('style');
+                        const styleElements = Object.keys(window.styles);
+
+                        for (var i = 0; i < styleElements.length; i++) {
+                            const option = document.createElement('option');
+                            option.value = styleElements[i];
+                            option.text = styleNames[i];
+                            select.appendChild(option);
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button id="copy">Copy</button>
+            </div>
+
+            <div id="output"></div>
+        </main>
+
+        <footer></footer>
+    </body>
+</html>
