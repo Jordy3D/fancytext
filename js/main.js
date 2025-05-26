@@ -28,24 +28,26 @@ function setOutput(text) {
 wordInput.addEventListener("input", () => {
     const result = displayWord(wordInput.value, styleInput.value);
     setOutput(result);
-    saveInputValues(); // Save input values to localStorage
+    
+    saveInputValues();
 });
 commentInput.addEventListener("input", () => {
+    generateStylePreviews(); // Update the style preview when comment changes
+    
     const result = displayWord(wordInput.value, styleInput.value);
     setOutput(result);
-    saveInputValues(); // Save input values to localStorage
-
-    // update the style preview when comment changes
-    generateStylePreviews(); // Update the style preview when comment changes
+    
+    saveInputValues();
 });
 
 // update on change of style
 styleInput.addEventListener("change", () => {
+    generateStylePreviews(); // Update the style preview when style changes
+    
     const result = displayWord(wordInput.value, styleInput.value);
     setOutput(result);
-    saveInputValues(); // Save input values to localStorage
-
-    generateStylePreviews(); // Update the style preview when style changes
+    
+    saveInputValues();
 });
 
 function displayWord(word, styleName = "lines") {
@@ -199,7 +201,7 @@ copyButton.addEventListener("click", () => {
     navigator.clipboard
         .writeText(document.getElementById("output").innerText)
         .then(() => {
-            setTextTemp("Copied!", copyButton);
+            setTextTemp("copied", copyButton);
         });
 });
 
@@ -213,7 +215,7 @@ clearButton.addEventListener("click", () => {
     localStorage.setItem("wordInput", "");
     localStorage.setItem("commentInput", "");
 
-    setTextTemp("cleared!", clearButton);
+    setTextTemp("cleared", clearButton);
 });
 
 // #endregion

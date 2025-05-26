@@ -216,12 +216,6 @@ main {
 }
 
 /* Buttons */
-.buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-}
-
 .btn {
     padding: 0.75rem 1.5rem;
     background-color: var(--button-background);
@@ -248,11 +242,14 @@ main {
     grid-column: 1 / -1;
 }
 
+.inputs-header,
 .output-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
 
+.output-header {
     &.has-unsupported h2 {
         border-bottom: 2px dashed #e74c3c;
         padding-bottom: 0.5rem;
