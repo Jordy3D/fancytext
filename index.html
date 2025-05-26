@@ -1,58 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Fancy Text</title>
+        <title>fancytext</title>
 
         <link rel="stylesheet" href="css/magic.css" />
         <link rel="stylesheet" href="css/style.css" />
 
         <script src="js/styles.js"></script>
+        <script src="js/utils.js"></script>
+        <script defer src="js/settings.js"></script>
         <script defer src="js/main.js"></script>
     </head>
     <body>
-        <header></header>
+        <header>
+            <div class="header-content">
+                <h1>fancytext</h1>
+                <div class="theme-toggle">
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle" />
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="theme-label">theme</span>
+                </div>
+            </div>
+        </header>
         <main>
-            <h1>Fancy Text</h1>
-            <div class="inputs">
-                <div class="input-group">
-                    <label for="input">Enter your text:</label>
-                    <input type="text" id="input" value="a" />
+            <div class="container">
+                <div class="inputs-container">
+                    <h2>inputs</h2>
+                    <div class="inputs">
+                        <div class="input-group">
+                            <label for="input">text</label>
+                            <textarea id="input" rows="3">a</textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="comment">//comment</label>
+                            <input type="text" id="comment" />
+                        </div>
+
+                        <div class="input-group">
+                            <label for="style">style</label>
+
+                            <select id="style"></select>
+
+                            <script>
+                                const select = document.getElementById("style");
+                                const styleElements = Object.keys(
+                                    window.styles
+                                );
+
+                                for (var i = 0; i < styleElements.length; i++) {
+                                    const option = document.createElement("option");
+                                    option.value = styleElements[i];
+                                    option.text = styleNames[i];
+                                    select.appendChild(option);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button id="clear" class="btn">clear</button>
+                    </div>
                 </div>
-
-                <div class="input-group">
-                    <label for="comment">Comment (optional):</label>
-                    <input type="text" id="comment" />
+                <div class="preview-container">
+                    <h2>preview</h2>
+                    <div id="style-preview"></div>
                 </div>
-
-                <div class="input-group">
-                    <label for="style">Choose a style:</label>
-
-                    <select id="style">
-                    </select>
-
-                    <script>
-                        const select = document.getElementById('style');
-                        const styleElements = Object.keys(window.styles);
-
-                        for (var i = 0; i < styleElements.length; i++) {
-                            const option = document.createElement('option');
-                            option.value = styleElements[i];
-                            option.text = styleNames[i];
-                            select.appendChild(option);
-                        }
-                    </script>
+                <div class="output-container">
+                    <div class="output-header">
+                        <div class="header-title">
+                            <h2>output</h2>
+                            <span id="unsupported-warning" class="hidden">some characters not supported</span>
+                        </div>
+                        <button id="copy" class="btn">copy</button>
+                    </div>
+                    <div id="output"></div>
                 </div>
             </div>
-
-            <div class="buttons">
-                <button id="copy">Copy</button>
-            </div>
-
-            <div id="output"></div>
         </main>
 
-        <footer></footer>
+        <footer>
+            <div class="footer-content">
+                <p>
+                    source code on
+                    <a href="https://github.com/jordy3D/fancytext" target="_blank">github</a>
+                </p>
+            </div>
+        </footer>
     </body>
 </html>
